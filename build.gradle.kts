@@ -8,7 +8,7 @@ val koin_version: String by project
 
 plugins {
     application
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.8.20"
     kotlin("plugin.serialization") version "1.7.10"
 }
 
@@ -50,10 +50,16 @@ tasks {
     create("stage").dependsOn("installDist")
 }
 
-tasks.test {
+tasks.withType<Test> {
     useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
 }
 
-tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions.jvmTarget = "11"
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "${JavaVersion.VERSION_11}"
+        allWarningsAsErrors = true
+    }
 }

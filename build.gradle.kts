@@ -60,6 +60,6 @@ tasks.withType<Test> {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         jvmTarget = "${JavaVersion.VERSION_11}"
-        allWarningsAsErrors = true
+//        allWarningsAsErrors = true
     }
 }

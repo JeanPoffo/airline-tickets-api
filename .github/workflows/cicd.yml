@@ -16,12 +16,10 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v4.2.1
         with:
-          java-version: 17
-          distribution: corretto
-          cache: gradle
-            
-      - name: Run build
-        run: gradle build
-        
-      - name: Run test
-        run: gradle test
+          distribution: 'corretto'
+          java-version: '17'
+          # cache: 'gradle'
+      - name: Build
+        run: ./gradlew build --no-daemon
+      - name: Test
+        run: ./gradlew test --no-daemon

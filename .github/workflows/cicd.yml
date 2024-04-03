@@ -18,9 +18,7 @@ jobs:
         uses: actions/setup-java@v4.2.1
         with:
           distribution: 'corretto'
-          java-version: '17'
+          java-version: '11'
           cache: 'gradle'
-      - name: Build
-        run: gradle build --no-daemon
-      - name: Test
-        run: gradle test --no-daemon
+      - name: Check
+        run: gradle check --no-daemon

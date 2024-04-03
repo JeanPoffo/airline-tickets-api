@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    
+    steps:
+      - name: Setup Java
+        uses: actions/setup-java@v4.2.1
+        with:
+          java-version: 17
+          distribution: correto
+          cache: gradle
+            
+      - name: Run build
+        run: gradle build
+        
+      - name: Run test
+        run: gradle test

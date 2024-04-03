@@ -21,4 +21,4 @@ jobs:
           java-version: '11'
           cache: 'gradle'
       - name: Check
-        run: gradle check --no-daemon
+        run: ./gradlew check --no-daemon
